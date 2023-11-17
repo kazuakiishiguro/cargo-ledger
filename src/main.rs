@@ -238,8 +238,11 @@ fn build_app(
         .expect("Could not find package's parent path");
 
     let hex_file_abs = if hex_next_to_json {
+        dbg!(current_dir);
         current_dir
     } else {
+        dbg!(&exe_path);
+        dbg!(&exe_path.parent());
         exe_path.parent().unwrap()
     }
     .join("app.hex");
