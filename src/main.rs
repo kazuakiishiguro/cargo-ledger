@@ -209,7 +209,9 @@ fn build_app(
             let mut exe_path = PathBuf::new();
             let out = cargo_cmd.stdout.take().unwrap();
             let reader = std::io::BufReader::new(out);
+            dbg!(&reader);
             for message in Message::parse_stream(reader) {
+                dbg!(&message.as_ref());
                 match message.as_ref().unwrap() {
                     Message::CompilerArtifact(artifact) => {
                         if let Some(n) = &artifact.executable {
